@@ -69,8 +69,8 @@ public class kontrollKaestchen extends JFrame {
         gruppe.add(essen2);
 
         // die normalen Buttons
-        buttonBestellen = new JButton("Bestellen");
-        buttonBeenden = new JButton("Beenden");
+        //buttonBestellen = new JButton("Bestellen");
+        //buttonBeenden = new JButton("Beenden");
 
         // ein Gridlayout erstellen
         setLayout(new GridLayout(0,2,10,10));
@@ -84,8 +84,8 @@ public class kontrollKaestchen extends JFrame {
         add(beilage1);
         add(essen2);
         add(beilage2);
-        add(buttonBestellen);
-        add(buttonBeenden);
+        add(buttonBestellen = new JButton("Bestellen"));
+        add(buttonBeenden = new JButton("Beenden"));
 
         // den Listener verbinden
         MyListener listener = new MyListener();
