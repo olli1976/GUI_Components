@@ -51,15 +51,15 @@ public class kontrollKaestchen extends JFrame {
         beilage = " Beilage: ";
 
         // die Checkboxen
-        beilage1 = new JCheckBox("Pommes");
-        beilage2 = new JCheckBox("Reis");
+        //beilage1 = new JCheckBox("Pommes");
+        //beilage2 = new JCheckBox("Reis");
 
         // die ButtonGroup erzeugen
         gruppe = new ButtonGroup();
 
         // die RadioButtons
-        essen1 = new JRadioButton("Schnitzel");
-        essen2 = new JRadioButton("Currywurst");
+        //essen1 = new JRadioButton("Schnitzel");
+        //essen2 = new JRadioButton("Currywurst");
 
         // als Standard wird das Schnitzel gesetzt
         essen1.setSelected(true);
@@ -80,10 +80,10 @@ public class kontrollKaestchen extends JFrame {
         add(new JLabel("Ihre Beilage"));
 
         // die Buttons werden einzeln eingefügt und nicht als Gruppe
-        add(essen1);
-        add(beilage1);
-        add(essen2);
-        add(beilage2);
+        add(essen1 = new JRadioButton("Schnitzel"));
+        add(beilage1 = new JCheckBox("Pommes"));
+        add(essen2 = new JRadioButton("Currywurst"));
+        add(beilage2 = new JCheckBox("Reis"));
         add(buttonBestellen = new JButton("Bestellen"));
         add(buttonBeenden = new JButton("Beenden"));
 
