@@ -1,9 +1,12 @@
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class kontrollKaestchen extends JFrame {
+    // JPanel für die Anordnung
+    private JPanel panelCheckBoxen, panelRadioButtons;
 
     // private Instanzvariablen
     private String essen, beilage;
@@ -28,14 +31,16 @@ public class kontrollKaestchen extends JFrame {
             if (e.getActionCommand().equals("Bestellen")){
                 if (essen1.isSelected())
                     essen = essen +"Schnitzel";
+                if(essen2.isSelected())
+                    essen = essen +"Currywurst";
                 if (beilage1.isSelected())
                     beilage = beilage + "Pommes";
                 if (beilage2.isSelected())
                     beilage = beilage + "Reis";
                 if (beilage1.isSelected() == false && beilage2.isSelected() == false)
                     beilage = beilage + "keine";
-                JOptionPane.showMessageDialog(null,"Biite sehr!\n"+ essen + beilage);
-                essen = "Ihr Essen: ";
+                JOptionPane.showMessageDialog(null,"Bitte sehr!\n"+ essen + beilage);
+                essen = " Ihr Essen: ";
                 beilage = " Beilage: ";
             }
             if (e.getActionCommand().equals("Beenden"))
@@ -51,15 +56,15 @@ public class kontrollKaestchen extends JFrame {
         beilage = " Beilage: ";
 
         // die Checkboxen
-        //beilage1 = new JCheckBox("Pommes");
-        //beilage2 = new JCheckBox("Reis");
+        beilage1 = new JCheckBox("Pommes");
+        beilage2 = new JCheckBox("Reis");
 
         // die ButtonGroup erzeugen
         gruppe = new ButtonGroup();
 
         // die RadioButtons
-        //essen1 = new JRadioButton("Schnitzel");
-        //essen2 = new JRadioButton("Currywurst");
+        essen1 = new JRadioButton("Schnitzel");
+        essen2 = new JRadioButton("Currywurst");
 
         // als Standard wird das Schnitzel gesetzt
         essen1.setSelected(true);
@@ -69,21 +74,29 @@ public class kontrollKaestchen extends JFrame {
         gruppe.add(essen2);
 
         // die normalen Buttons
-        //buttonBestellen = new JButton("Bestellen");
-        //buttonBeenden = new JButton("Beenden");
+        buttonBestellen = new JButton("Bestellen");
+        buttonBeenden = new JButton("Beenden");
 
-        // ein Gridlayout erstellen
+        // ein neues Panel erzeugen und die checkboxen einsetzen
+        panelCheckBoxen = new JPanel();
+        panelCheckBoxen.add(beilage1);
+        panelCheckBoxen.add(beilage2);
+        // das Panel bekommt einen Rahmen und Titel
+        panelCheckBoxen.setBorder(new TitledBorder("Ihre Beilagen:"));
+
+        // ein Panel für die RadioButtons
+        panelRadioButtons = new JPanel();
+        panelRadioButtons.add(essen1);
+        panelRadioButtons.add(essen2);
+        // Rahmen und Titel für das Panel
+        panelRadioButtons.setBorder(new TitledBorder("Ihr Essen:"));
+
+        // ein Gridlayout erstellen für den äusseren Container
         setLayout(new GridLayout(0,2,10,10));
-
-        // die Komponenten hinzufügen
-        add(new JLabel ("Ihr Essen"));
-        add(new JLabel("Ihre Beilage"));
-
-        // die Buttons werden einzeln eingefügt und nicht als Gruppe
-        add(essen1 = new JRadioButton("Schnitzel"));
-        add(beilage1 = new JCheckBox("Pommes"));
-        add(essen2 = new JRadioButton("Currywurst"));
-        add(beilage2 = new JCheckBox("Reis"));
+        //die Panels einbauen
+        add(panelRadioButtons);
+        add(panelCheckBoxen);
+        // die Buttons zur Steuerung hinzufügen
         add(buttonBestellen = new JButton("Bestellen"));
         add(buttonBeenden = new JButton("Beenden"));
 
