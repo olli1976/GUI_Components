@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class kontrollKaestchen extends JFrame {
     // JPanel für die Anordnung
-    private JPanel panelCheckBoxen, panelRadioButtons;
+    private JPanel panelCheckBoxen, panelRadioButtons, panelBestellButton, panelBeendenButton;
 
     // private Instanzvariablen
     private String essen, beilage;
@@ -77,28 +77,35 @@ public class kontrollKaestchen extends JFrame {
         buttonBestellen = new JButton("Bestellen");
         buttonBeenden = new JButton("Beenden");
 
-        // ein neues Panel erzeugen und die checkboxen einsetzen
+        // ein Panel für die Checkboxen ( Beilagen )
         panelCheckBoxen = new JPanel();
         panelCheckBoxen.add(beilage1);
         panelCheckBoxen.add(beilage2);
         // das Panel bekommt einen Rahmen und Titel
         panelCheckBoxen.setBorder(new TitledBorder("Ihre Beilagen:"));
 
-        // ein Panel für die RadioButtons
+        // ein Panel für die RadioButtons ( Hauptmenü )
         panelRadioButtons = new JPanel();
         panelRadioButtons.add(essen1);
         panelRadioButtons.add(essen2);
         // Rahmen und Titel für das Panel
         panelRadioButtons.setBorder(new TitledBorder("Ihr Essen:"));
 
+        // ein Panel für den Bestellen Button
+        panelBestellButton = new JPanel();
+        panelBestellButton.add(buttonBestellen);
+
+        // ein panel für den Beenden Button
+        panelBeendenButton = new JPanel();
+        panelBeendenButton.add(buttonBeenden);
+
         // ein Gridlayout erstellen für den äusseren Container
         setLayout(new GridLayout(0,2,10,10));
         //die Panels einbauen
         add(panelRadioButtons);
         add(panelCheckBoxen);
-        // die Buttons zur Steuerung hinzufügen
-        add(buttonBestellen = new JButton("Bestellen"));
-        add(buttonBeenden = new JButton("Beenden"));
+        add(panelBestellButton);
+        add(panelBeendenButton);
 
         // den Listener verbinden
         MyListener listener = new MyListener();
